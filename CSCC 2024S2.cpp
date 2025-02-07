@@ -1,23 +1,24 @@
+//due AI assists
 #include <iostream>
 #include <vector>
 using namespace std;
 
-// ÅĞ¶Ï×Ö·û´®ÖĞµÄ×ÖÄ¸ÊÇ·ñ½»Ìæ³öÏÖÖØºÍÇá
+// åˆ¤æ–­å­—ç¬¦ä¸²ä¸­çš„å­—æ¯æ˜¯å¦äº¤æ›¿å‡ºç°é‡å’Œè½»
 bool isAlternate(string s) {
-    int freq[26] = { 0 }; // Êı×é´æ´¢Ã¿¸ö×ÖÄ¸µÄÆµÂÊ
+    int freq[26] = { 0 }; // æ•°ç»„å­˜å‚¨æ¯ä¸ªå­—æ¯çš„é¢‘ç‡
 
-    // ¼ÆËãÃ¿¸ö×ÖÄ¸µÄÆµÂÊ
+    // è®¡ç®—æ¯ä¸ªå­—æ¯çš„é¢‘ç‡
     for (char c : s) {
         freq[c - 'a']++;
     }
 
-    // ÅĞ¶ÏµÚÒ»¸ö×ÖÄ¸ÊÇ·ñÎªÖØ
+    // åˆ¤æ–­ç¬¬ä¸€ä¸ªå­—æ¯æ˜¯å¦ä¸ºé‡
     bool prevHeavy = (freq[s[0] - 'a'] > 1);
     for (int i = 1; i < s.size(); i++) {
-        // ÅĞ¶Ïµ±Ç°×ÖÄ¸ÊÇ·ñÎªÖØ
+        // åˆ¤æ–­å½“å‰å­—æ¯æ˜¯å¦ä¸ºé‡
         bool currentHeavy = (freq[s[i] - 'a'] > 1);
         if (currentHeavy == prevHeavy) {
-            return false; // Á½¸öÁ¬ĞøµÄ×ÖÄ¸ÒªÃ´¶¼ÊÇÖØµÄ£¬ÒªÃ´¶¼ÊÇÇáµÄ
+            return false; // ä¸¤ä¸ªè¿ç»­çš„å­—æ¯è¦ä¹ˆéƒ½æ˜¯é‡çš„ï¼Œè¦ä¹ˆéƒ½æ˜¯è½»çš„
         }
         prevHeavy = currentHeavy;
     }
@@ -29,12 +30,12 @@ int main() {
     cin >> T >> N;
     vector<string> strings(T);
 
-    // ¶ÁÈ¡ËùÓĞ×Ö·û´®
+    // è¯»å–æ‰€æœ‰å­—ç¬¦ä¸²
     for (int i = 0; i < T; i++) {
         cin >> strings[i];
     }
 
-    // ¼ì²éÃ¿¸ö×Ö·û´®ÊÇ·ñ½»Ìæ³öÏÖÖØºÍÇáµÄ×ÖÄ¸
+    // æ£€æŸ¥æ¯ä¸ªå­—ç¬¦ä¸²æ˜¯å¦äº¤æ›¿å‡ºç°é‡å’Œè½»çš„å­—æ¯
     for (const string& s : strings) {
         if (isAlternate(s)) {
             cout << "T" << endl;
